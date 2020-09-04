@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>rock paper scissors</title>
+    </head>
+    <body>
+        <script>
+            //declare a function that randomly selects for the computer
+            function computerPlay() {
+                let choices = ['rock', 'paper', 'scissors'];
+                return choices[Math.floor(Math.random() * 3)];
+            }
+            //the player selection is prompted and case insensitive
+            function playerPlay() {
+                return prompt("Rock, Paper, or Scissors?", "Rock").toLowerCase();
+            }
+            //declare a function that plays a single round
+            //the function takes two parameters - one each for computer and player
+            //the function returns a string with the results
+            function playRound(computerSelection, playerSelection){
+                let results;
+                if (computerSelection === 'rock') {
+                    switch(playerSelection) {
+                        case 'rock': 
+                        results = "You Tie!";
+                        break;
+                        case 'paper': 
+                        results = "You Win!  Paper beats Rock";
+                        break;
+                        case 'scissors': 
+                        results = "You Lose! Rock beats Scissors";
+                        break;
+                    }
+                } else if (computerSelection === 'paper') {
+                    switch(playerSelection) {
+                        case 'rock': 
+                        results = "You Lose! Paper beats Rock";
+                        break;
+                        case 'paper': 
+                        results = "You Tie!";
+                        break;
+                        case 'scissors': 
+                        results = "You Win! Scissors beats Paper";
+                        break;
+                    }
+                } else if (computerSelection === 'scissors') {
+                    switch(playerSelection) {
+                        case 'rock': 
+                        results = "You Win! Rock beats Scissors";
+                        break;
+                        case 'paper': 
+                        results = "You Lose! Scissors beats Paper";
+                        break;
+                        case 'scissors': 
+                        results = "You Tie!";
+                        break;
+                    }
+                }
+                console.log(results);
+                return results;
+            }
+            //write a new function that callbacks the previous function
+            //for a 5 round game
+            //report each round and overall winner to console
+            //if a tie is reported then replay that round
+            function game() {
+                let playerScore = 0;
+                let computerScore = 0;
+                for (let i = 1; i <= 5; i++) {
+                    let playerSelection = playerPlay();
+                    let computerSelection = computerPlay();
+                    let roundResults = playRound(computerSelection, playerSelection);
+                    (roundResults.indexOf('Tie') !== -1) ? i-- 
+                    : (roundResults.indexOf('Win') !== -1) ? playerScore += 1 
+                    : computerScore += 1;
+                    console.log(`Player: ${playerScore} Computer: ${computerScore}`);
+                }
+                (playerScore > computerScore) ? console.log("You Win!") : console.log("You Lose!");
+            }
+            game();
+        </script>
+    </body>
+</html>
