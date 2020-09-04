@@ -10,7 +10,7 @@
                 let choices = ['rock', 'paper', 'scissors'];
                 return choices[Math.floor(Math.random() * 3)];
             }
-            //the player selection is prompted and case insensitive
+            //prompt the player selection
             function playerPlay() {
                 let playerChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
                 while (playerChoice !== 'rock' && playerChoice !== 'paper' &&
@@ -20,9 +20,7 @@
                 }
                 return playerChoice;
             }
-            //declare a function that plays a single round
-            //the function takes two parameters - one each for computer and player
-            //the function prints the result to console
+            //declare a function that plays a single round and prints result
             function playRound(computerSelection, playerSelection){
                 let results;
                 if (computerSelection === 'rock') {
@@ -70,10 +68,8 @@
                 }
                 console.log(results);
             }
-            //write a game function that callbacks round function
-            //make the game be first to 5 points wins
-            //report each round and overall winner to console
-            //if a tie is reported then replay that round
+            //write a game function to play and report both the round results
+            //and overall winner of a first to 5
             function game() {
                 playerScore = 0;
                 computerScore = 0;
