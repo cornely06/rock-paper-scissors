@@ -67,8 +67,8 @@
                 let playerScore = 0;
                 let computerScore = 0;
                 for (let i = 1; i <= 5; i++) {
-                    let playerSelection = playerPlay();
-                    let computerSelection = computerPlay();
+                    playerSelection = playerPlay();
+                    computerSelection = computerPlay();
                     let roundResults = playRound(computerSelection, playerSelection);
                     (roundResults.indexOf('Tie') !== -1) ? i-- 
                     : (roundResults.indexOf('Win') !== -1) ? playerScore += 1 
@@ -77,6 +77,8 @@
                 }
                 (playerScore > computerScore) ? console.log("You Win!") : console.log("You Lose!");
             }
+            let playerSelection;
+            let computerSelection;
             game();
         </script>
     </body>
