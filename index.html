@@ -12,7 +12,7 @@
             }
             //the player selection is prompted and case insensitive
             function playerPlay() {
-                let playerChoice = prompt("Rock, Paper, or Scissors?", "Rock").toLowerCase();
+                let playerChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
                 while (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors') {
                     playerChoice = prompt("Invalid answer, please enter 'Rock', 'Paper', or 'Scissors'.");
                 }
@@ -30,30 +30,36 @@
                         break;
                         case 'paper': 
                         results = "You Win!  Paper beats Rock";
+                        playerScore++;
                         break;
                         case 'scissors': 
                         results = "You Lose! Rock beats Scissors";
+                        computerScore++;
                         break;
                     }
                 } else if (computerSelection === 'paper') {
                     switch(playerSelection) {
                         case 'rock': 
                         results = "You Lose! Paper beats Rock";
+                        computerScore++;
                         break;
                         case 'paper': 
                         results = "You Tie!";
                         break;
                         case 'scissors': 
                         results = "You Win! Scissors beats Paper";
+                        playerScore++;
                         break;
                     }
                 } else if (computerSelection === 'scissors') {
                     switch(playerSelection) {
                         case 'rock': 
                         results = "You Win! Rock beats Scissors";
+                        playerScore++;
                         break;
                         case 'paper': 
                         results = "You Lose! Scissors beats Paper";
+                        computerScore++;
                         break;
                         case 'scissors': 
                         results = "You Tie!";
@@ -61,21 +67,18 @@
                     }
                 }
                 console.log(results);
-                return results;
             }
             //write a new function that callbacks the previous function
             //for a 5 round game
             //report each round and overall winner to console
             //if a tie is reported then replay that round
             function game() {
-                let playerScore = 0;
-                let computerScore = 0;
+                playerScore = 0;
+                computerScore = 0;
                 while (playerScore < 5 && computerScore < 5) {
                     playerSelection = playerPlay();
                     computerSelection = computerPlay();
-                    let roundResults = playRound(computerSelection, playerSelection);
-                    if (roundResults.indexOf('Win') !== -1) {playerScore += 1} 
-                    else if (roundResults.indexOf('Lose') !== -1) {computerScore += 1}
+                    playRound(computerSelection, playerSelection);
                     console.log(`Player: ${playerScore} Computer: ${computerScore}`);
                 }
                 (playerScore > computerScore) ? console.log(`You Win! ${playerScore} - ${computerScore}`) 
@@ -83,6 +86,8 @@
             }
             let playerSelection;
             let computerSelection;
+            let playerScore;
+            let computerScore;
             game();
         </script>
     </body>
