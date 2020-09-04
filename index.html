@@ -13,9 +13,10 @@
             //the player selection is prompted and case insensitive
             function playerPlay() {
                 let playerChoice = prompt("Rock, Paper, or Scissors?", "Rock").toLowerCase();
-                if (playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
-                    return playerChoice;
-                } else {return prompt("Invalid answer, please enter 'Rock', 'Paper', or 'Scissors'.")}
+                while (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors') {
+                    playerChoice = prompt("Invalid answer, please enter 'Rock', 'Paper', or 'Scissors'.");
+                }
+                return playerChoice;
             }
             //declare a function that plays a single round
             //the function takes two parameters - one each for computer and player
