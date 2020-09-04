@@ -22,7 +22,7 @@
             }
             //declare a function that plays a single round
             //the function takes two parameters - one each for computer and player
-            //the function returns a string with the results
+            //the function prints the result to console
             function playRound(computerSelection, playerSelection){
                 let results;
                 if (computerSelection === 'rock') {
@@ -70,8 +70,8 @@
                 }
                 console.log(results);
             }
-            //write a new function that callbacks the previous function
-            //for a 5 round game
+            //write a game function that callbacks round function
+            //make the game be first to 5 points wins
             //report each round and overall winner to console
             //if a tie is reported then replay that round
             function game() {
