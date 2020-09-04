@@ -5,12 +5,12 @@
     </head>
     <body>
         <script>
-            //declare a function that randomly selects for the computer
+            //Declare a function that randomly selects for the computer
             function computerPlay() {
                 let choices = ['rock', 'paper', 'scissors'];
                 return choices[Math.floor(Math.random() * 3)];
             }
-            //prompt the player selection
+            //Prompt the player selection
             function playerPlay() {
                 let playerChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
                 while (playerChoice !== 'rock' && playerChoice !== 'paper' &&
@@ -20,7 +20,7 @@
                 }
                 return playerChoice;
             }
-            //declare a function that plays a single round and prints result
+            //Declare a function that plays a single round and prints result
             function playRound(computerSelection, playerSelection){
                 let results;
                 if (computerSelection === 'rock') {
@@ -68,7 +68,7 @@
                 }
                 console.log(results);
             }
-            //write a game function to play and report both the round results
+            //Write a game function to play and report both the round results
             //and overall winner of a first to 5
             function game() {
                 playerScore = 0;
