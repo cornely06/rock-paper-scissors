@@ -69,7 +69,7 @@ function game() {
   while(playerScore < 3 && computerScore < 3) {
     console.log(playRound());
   }
-  console.log(results());
+  return results();
 }
 
 // Display winner
