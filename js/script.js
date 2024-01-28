@@ -8,6 +8,10 @@ function getComputerChoice() {
   return choice === 1 ? 'Rock' : choice === 2 ? 'Paper' : 'Scissors';
 }
 // Input player choice
+function playerChoice() {
+  const choice = prompt('Rock, Paper, or Scissors?');
+  return caseInsensitive(choice);
+}
 // Compare and return results
 function playRound(playerSelection, computerSelection) {
 
