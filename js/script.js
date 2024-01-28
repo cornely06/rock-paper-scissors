@@ -8,17 +8,18 @@ function getComputerChoice() {
   return choice === 1 ? 'Rock' : choice === 2 ? 'Paper' : 'Scissors';
 }
 // Input player choice
-function playerChoice() {
+function getPlayerChoice() {
   const choice = prompt('Rock, Paper, or Scissors?');
   return caseInsensitive(choice);
 }
 // Compare and return results
 function playRound(playerSelection, computerSelection) {
   console.log(playerSelection, computerSelection);
+  if (playerSelection === computerSelection) {
+    console.log('Tied! Replaying...')
+    return playRound(getPlayerChoice(), getComputerChoice());
+  }
   switch(playerSelection) {
-    case computerSelection:
-      return 'Tied! Try again.'
-      break;
     case 'Rock':
       if (computerSelection === 'Paper') {
         return `You lose! Paper beats Rock.`
