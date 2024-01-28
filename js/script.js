@@ -5,7 +5,14 @@ function randomNumber() {
 // Get computer choice
 function getComputerChoice() {
   let choice = randomNumber();
-  return choice === 1 ? 'rock' : choice === 2 ? 'paper' : 'scissors';
+  return choice === 1 ? 'Rock' : choice === 2 ? 'Paper' : 'Scissors';
 }
 // Input player choice
 // Compare and return results
+function playRound(playerSelection, computerSelection) {
+
+}
+// Format choices to be case-insensitive
+function caseInsensitive(choice) {
+  return choice[0].toUpperCase() + choice.slice(1).toLowerCase();
+}
