@@ -4,7 +4,8 @@ function randomNumber() {
 }
 // Get computer choice
 function getComputerChoice() {
-  
+  let choice = randomNumber();
+  return choice === 1 ? 'rock' : choice === 2 ? 'paper' : 'scissors';
 }
 // Input player choice
 // Compare and return results
