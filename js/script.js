@@ -14,7 +14,6 @@ function getPlayerChoice() {
 }
 // Compare and return results
 function playRound(playerSelection, computerSelection) {
-  console.log(playerSelection, computerSelection);
   if (playerSelection === computerSelection) {
     console.log('Tied! Replaying...')
     return playRound(getPlayerChoice(), getComputerChoice());
@@ -41,6 +40,8 @@ function playRound(playerSelection, computerSelection) {
         return `You win! Scissors beats Paper.`
       }
   }
+  console.log('Invalid choice, please pick Rock, Paper, or Scissors')
+      return playRound(getPlayerChoice(), getComputerChoice());
 }
 // Format choices to be case-insensitive
 function caseInsensitive(choice) {
