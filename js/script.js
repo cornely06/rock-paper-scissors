@@ -14,7 +14,32 @@ function playerChoice() {
 }
 // Compare and return results
 function playRound(playerSelection, computerSelection) {
-
+  console.log(playerSelection, computerSelection);
+  switch(playerSelection) {
+    case computerSelection:
+      return 'Tied! Try again.'
+      break;
+    case 'Rock':
+      if (computerSelection === 'Paper') {
+        return `You lose! Paper beats Rock.`
+      } else {
+        return `You win! Rock beats scissors.`
+      }
+      break;
+    case 'Paper':
+      if (computerSelection === 'Scissors') {
+        return `You lose! Scissors beats Paper.`
+      } else {
+        return `You win! Paper beats Rock.`
+      }
+      break;
+    case 'Scissors':
+      if (computerSelection === 'Rock') {
+        return `You lose! Rock beats Scissors.`
+      } else {
+        return `You win! Scissors beats Paper.`
+      }
+  }
 }
 // Format choices to be case-insensitive
 function caseInsensitive(choice) {
