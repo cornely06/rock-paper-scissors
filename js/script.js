@@ -69,4 +69,10 @@ function game() {
   while(playerScore < 3 && computerScore < 3) {
     console.log(playRound());
   }
+  console.log(results());
+}
+
+// Display winner
+function results() {
+  return playerScore > computerScore ? `You win! Final score ${playerScore} - ${computerScore}.` : `You lose! Final score ${playerScore} - ${computerScore}.`
 }
