@@ -1,5 +1,5 @@
 let buttons = document.querySelectorAll(".player-choice")
-console.log(buttons)
+buttons.forEach((button) => button.addEventListener("click", playRound))
 
 function randomNumber() {
   return Math.floor(Math.random() * 3) + 1
