@@ -16,6 +16,13 @@ function playRound() {
   let playerChoice = this.id
   let computerChoice = computerSelection()
   compareChoices(playerChoice, computerChoice)
+  if (playerScore >= 5) {
+    console.log(`You win! ${playerScore} - ${computerScore}`)
+    reset()
+  } else if (computerScore >= 5) {
+    console.log(`You lose. ${playerScore} - ${computerScore}`)
+    reset()
+  }
 
   console.log(playerChoice, computerChoice)
 }
