@@ -56,3 +56,7 @@ function compareChoices(player, computer) {
 }
 // check if a score of 5 has been reached
 // reset scores for new game
+function reset() {
+  playerScore = 0
+  computerScore = 0
+}
