@@ -1,5 +1,8 @@
 let playerScore = 0
 let computerScore = 0
+let round = 0
+let scoreboard = document.querySelector(".scoreboard")
+let results = document.querySelector(".results")
 
 let buttons = document.querySelectorAll(".player-choice")
 buttons.forEach((button) => button.addEventListener("click", playRound))
@@ -17,10 +20,16 @@ function playRound() {
   let computerChoice = computerSelection()
   compareChoices(playerChoice, computerChoice)
   if (playerScore >= 5) {
-    console.log(`You win! ${playerScore} - ${computerScore}`)
+    let results = document.querySelector(".results")
+    let roundResults = document.createElement("p")
+    roundResults.textContent = `You win! ${playerScore} - ${computerScore}`
+    results.appendChild(roundResults)
     reset()
   } else if (computerScore >= 5) {
-    console.log(`You lose. ${playerScore} - ${computerScore}`)
+    let results = document.querySelector(".results")
+    let gameResults = document.createElement("p")
+    gameResults.textContent = `You lose. ${playerScore} - ${computerScore}`
+    results.appendChild(gameResults)
     reset()
   }
 
@@ -58,12 +67,18 @@ function compareChoices(player, computer) {
       }
       break
   }
-
-  console.log(`Player: ${playerScore}, Computer: ${computerScore}`)
+  round++
+  let roundResults = document.createElement("p")
+  roundResults.textContent = `Round ${round} --- Player: ${playerScore}, Computer: ${computerScore}`
+  scoreboard.appendChild(roundResults)
 }
 // check if a score of 5 has been reached
 // reset scores for new game
 function reset() {
   playerScore = 0
   computerScore = 0
+  round = 0
+  while (scoreboard.firstChild) {
+    scoreboard.removeChild(scoreboard.lastChild)
+  }
 }
