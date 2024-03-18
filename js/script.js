@@ -1,8 +1,8 @@
 let playerScore = 0
 let computerScore = 0
-let round = 0
 let scoreboard = document.querySelector(".scoreboard")
-let results = document.querySelector(".results")
+let roundResults = document.querySelector(".roundResults")
+let matchResults = document.querySelector(".matchResults")
 
 let buttons = document.querySelectorAll(".player-choice")
 buttons.forEach((button) => button.addEventListener("click", playRound))
@@ -18,22 +18,20 @@ function computerSelection() {
 function playRound() {
   let playerChoice = this.id
   let computerChoice = computerSelection()
+  matchResults.innerHTML = ""
+  roundResults.textContent = ""
   compareChoices(playerChoice, computerChoice)
   if (playerScore >= 5) {
-    let results = document.querySelector(".results")
-    let roundResults = document.createElement("p")
-    roundResults.textContent = `You win! ${playerScore} - ${computerScore}`
-    results.appendChild(roundResults)
+    matchResults.innerHTML = `You win! ${playerScore} - ${computerScore}
+    <br>
+    Press any button to start a new game`
     reset()
   } else if (computerScore >= 5) {
-    let results = document.querySelector(".results")
-    let gameResults = document.createElement("p")
-    gameResults.textContent = `You lose. ${playerScore} - ${computerScore}`
-    results.appendChild(gameResults)
+    matchResults.innerHTML = `You lose. ${playerScore} - ${computerScore}
+    <br>
+    Press any button to start a new game`
     reset()
   }
-
-  console.log(playerChoice, computerChoice)
 }
 
 // compare choices
@@ -41,44 +39,45 @@ function compareChoices(player, computer) {
   switch (player) {
     case "rock":
       if (computer === "rock") {
+        roundResults.textContent = `Draw`
         break
       } else if (computer === "paper") {
+        roundResults.textContent = `Paper beats Rock`
         computerScore++
       } else {
+        roundResults.textContent = `Rock beats Scissors`
         playerScore++
       }
       break
     case "paper":
       if (computer === "paper") {
+        roundResults.textContent = `Draw`
         break
       } else if (computer === "scissors") {
+        roundResults.textContent = `Scissors beats Paper`
         computerScore++
       } else {
+        roundResults.textContent = `Paper beats Rock`
         playerScore++
       }
       break
     case "scissors":
       if (computer === "scissors") {
+        roundResults.textContent = `Draw`
         break
       } else if (computer === "rock") {
+        roundResults.textContent = `Rock beats Scissors`
         computerScore++
       } else {
+        roundResults.textContent = `Scissors beats Paper`
         playerScore++
       }
       break
   }
-  round++
-  let roundResults = document.createElement("p")
-  roundResults.textContent = `Round ${round} --- Player: ${playerScore}, Computer: ${computerScore}`
-  scoreboard.appendChild(roundResults)
+  scoreboard.textContent = `Player: ${playerScore}
+  Computer: ${computerScore}`
 }
-// check if a score of 5 has been reached
-// reset scores for new game
 function reset() {
   playerScore = 0
   computerScore = 0
-  round = 0
-  while (scoreboard.firstChild) {
-    scoreboard.removeChild(scoreboard.lastChild)
-  }
 }
